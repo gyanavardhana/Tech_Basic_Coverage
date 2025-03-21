@@ -3,12 +3,12 @@ let message  = "hello world";
 console.log(message);
 
 let num = 10;
-const checkeoro= (num) => {return num%2==0 ? "even" : "odd";}
+const checkeoro= num => num%2==0 ? "even" : "odd";
 console.log(checkeoro(num));
 
 
 let nameone = 'John Doe';
-const rev = (name) => {return name.split("").reverse().join("");}
+const rev = name => name.split("").reverse().join("")
 console.log(rev(nameone))
 
 //- Implement a loop that prints numbers 1-100 with "FizzBuzz" logic.
