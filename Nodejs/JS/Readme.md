@@ -10,31 +10,31 @@ Directory for practing Javascript Basics
 - Operators (Arithmetic, Comparison, Logical, Bitwise, Assignment) - Ignored
 - Control Flow (`if`-`else`, `switch`) - Ignored
 - Loops (`for`, `while`, `do-while`, `forEach`) - done
-- Functions (`function`, arrow functions, default parameters, rest/spread)
+- Functions (`function`, arrow functions, default parameters, rest/spread) - DONE
 
 #### **Practice Tasks**
-- Create a script that prints "Hello, World!".
-- Write a function to check if a number is even or odd.
-- Create a function that reverses a string.
-- Implement a loop that prints numbers 1-100 with "FizzBuzz" logic.
+- Create a script that prints "Hello, World!". DONE
+- Write a function to check if a number is even or odd. - DONE
+- Create a function that reverses a string. - DONE 
+- Implement a loop that prints numbers 1-100 with "FizzBuzz" logic. - DONE 
 
 ---
 
 ### **Phase 2: Intermediate JavaScript**
 #### **Concepts to Cover**
-- Objects (`this`, methods, prototypes)
-- Arrays (map, filter, reduce, find, some, every)
-- Destructuring (Array, Object)
-- Spread and Rest operators (`...`)
-- Template Literals
-- Callbacks and Promises (async programming)
-- Error Handling (`try-catch`, `throw`)
+- Objects (`this`, methods, prototypes) - DONE
+- Arrays (map, filter, reduce, find, some, every) - DONE
+- Destructuring (Array, Object) - DONE
+- Spread and Rest operators (`...`) - DONE
+- Template Literals - DONE
+- Callbacks and Promises (async programming) - DONE
+- Error Handling (`try-catch`, `throw`) - DONE
 
 #### **Practice Tasks**
-- Create an object representing a book and access its properties dynamically.
-- Implement an array method to filter out even numbers from an array.
-- Write a function that capitalizes the first letter of each word in a sentence.
-- Use `Promise` to fetch fake API data and handle the response.
+- Create an object representing a book and access its properties dynamically. - DONE
+- Implement an array method to filter out even numbers from an array. - DONE
+- Write a function that capitalizes the first letter of each word in a sentence.  - DONE
+- Use `Promise` to fetch fake API data and handle the response.  - DONE
 
 ---
 
