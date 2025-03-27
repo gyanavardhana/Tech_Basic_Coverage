@@ -5,11 +5,11 @@ Directory for practing Javascript Basics
 
 ### **Phase 1: JavaScript Basics**
 #### **Concepts to Cover**
-- Variables (`let`, `const`, `var`) - Done
-- Data Types (String, Number, Boolean, Object, Array, Undefined, Null, Symbol, BigInt) - Done
+- Variables (`let`, `const`, `var`) - DONE
+- Data Types (String, Number, Boolean, Object, Array, Undefined, Null, Symbol, BigInt) - DONE
 - Operators (Arithmetic, Comparison, Logical, Bitwise, Assignment) - Ignored
 - Control Flow (`if`-`else`, `switch`) - Ignored
-- Loops (`for`, `while`, `do-while`, `forEach`) - done
+- Loops (`for`, `while`, `do-while`, `forEach`) - DONE
 - Functions (`function`, arrow functions, default parameters, rest/spread) - DONE
 
 #### **Practice Tasks**
@@ -40,18 +40,18 @@ Directory for practing Javascript Basics
 
 ### **Phase 3: Functional Programming**
 #### **Concepts to Cover**
-- Immutability (`Object.freeze`, `const`, spread)
-- Pure Functions
-- Higher-Order Functions
-- Closures
-- Recursion
-- Function Composition
+- Immutability (`Object.freeze`, `const`, spread) - DONE
+- Pure Functions - DONE
+- Higher-Order Functions - DONE
+- Closures - DONE 
+- Recursion - DONE
+- Function Composition - DONE
 
 #### **Practice Tasks**
-- Write a pure function that returns a new array with doubled numbers.
-- Implement a function that takes another function as an argument and applies it to an array.
-- Use closures to create a counter function.
-- Implement a recursive function for calculating factorial.
+- Write a pure function that returns a new array with doubled numbers. - DONE 
+- Implement a function that takes another function as an argument and applies it to an array. - DONE  
+- Use closures to create a counter function. - DONE
+- Implement a recursive function for calculating factorial. - DONE
 
 ---
 
