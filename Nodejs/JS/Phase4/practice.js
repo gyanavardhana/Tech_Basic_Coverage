@@ -32,3 +32,8 @@ const debouncedLog = debounce(log, 5000);
 debouncedLog();
 
 
+localStorage.setItem('name', 'John');
+const name = localStorage.getItem('name');
+console.log(name); // John
+localStorage.removeItem('name');
+localStorage.clear();
