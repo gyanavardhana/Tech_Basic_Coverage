@@ -57,15 +57,15 @@ Directory for practing Javascript Basics
 
 ### **Phase 4: Advanced Topics**
 #### **Concepts to Cover**
-- ES6+ Features (`async/await`, optional chaining, nullish coalescing)
-- Modules (`import`, `export`)
-- Event Loop & Asynchronous JS
-- Prototypes & Inheritance
-- Web APIs (`fetch`, `localStorage`, `sessionStorage`)
+- ES6+ Features (`async/await`, optional chaining, nullish coalescing) - Done
+- Modules (`import`, `export`) - Done
+- Event Loop & Asynchronous JS - Picked up later
+- Prototypes & Inheritance - Done
+- Web APIs (`fetch`, `localStorage`, `sessionStorage`) - Done
 
 #### **Practice Tasks**
-- Create a simple `fetch` API call and display the data.
-- Implement a debounce function.
+- Create a simple `fetch` API call and display the data. - Done
+- Implement a debounce function. - Done
 - Build a small counter app using the DOM and event listeners.
 - Save and retrieve user preferences in `localStorage`.
 
