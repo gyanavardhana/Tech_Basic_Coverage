@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Task Tracker</h1>
+    <input type="text" id="taskInput" placeholder="Add a new task">
+    <button id="addTask">Add Task</button>
+    <ul id="taskList"></ul>
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const addTaskButton = document.getElementById('addTask');
+        const taskList = document.getElementById('taskList');
+    
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    
+        function renderTasks() {
+            taskList.innerHTML = '';
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                li.style.display = 'flex';
+                li.style.alignItems = 'center';
+                li.style.justifyContent = 'space-between';
+    
+                const taskText = document.createElement('span');
+                taskText.textContent = task.text;
+                if (task.completed) {
+                    taskText.style.textDecoration = 'line-through';
+                    taskText.style.color = 'gray';
+                }
+    
+                const buttonContainer = document.createElement('div');
+                buttonContainer.style.display = 'flex';
+                buttonContainer.style.gap = '5px';
+    
+                const completeButton = document.createElement('button');
+                completeButton.textContent = '✔';
+                completeButton.addEventListener('click', () => {
+                    tasks[index].completed = !tasks[index].completed;
+                    localStorage.setItem('tasks', JSON.stringify(tasks));
+                    renderTasks();
+                });
+    
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = '✖';
+                deleteButton.addEventListener('click', () => {
+                    tasks.splice(index, 1);
+                    localStorage.setItem('tasks', JSON.stringify(tasks));
+                    renderTasks();
+                });
+    
+                buttonContainer.appendChild(completeButton);
+                buttonContainer.appendChild(deleteButton);
+    
+                li.appendChild(taskText);
+                li.appendChild(buttonContainer);
+                taskList.appendChild(li);
+            });
+        }
+    
+        addTaskButton.addEventListener('click', () => {
+            if (taskInput.value) {
+                tasks.push({ text: taskInput.value, completed: false });
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+                taskInput.value = '';
+                renderTasks();
+            }
+        });
+    
+        renderTasks();
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            margin-right: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            cursor: pointer;
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin: 5px 0;
+        }
+        li:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</body>
+</html>
