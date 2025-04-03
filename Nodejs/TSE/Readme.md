@@ -1,12 +1,12 @@
 # **Phase 1: TypeScript Basics & Setup**
 ### **Concepts to Cover**
-- What is TypeScript? Why use it?
-- Initializing a TypeScript project (`tsc --init`)
-- Understanding the `tsconfig.json` file
-- Assigning types and type inference
-- Basic types: `number`, `string`, `boolean`
-- Arrays (`number[]`, `string[]`, `Array<T>`)
-- `any` type and why to avoid it
+- What is TypeScript? Why use it? - Done
+- Initializing a TypeScript project (`tsc --init`) - Done
+- Understanding the `tsconfig.json` file - Done 
+- Assigning types and type inference - Done 
+- Basic types: `number`, `string`, `boolean` - Done
+- Arrays (`number[]`, `string[]`, `Array<T>`) - Done
+- `any` type and why to avoid it - Done
 - Object basics (`type` and `interface`)
 - Defining functions (parameter and return types)
 - `void` type and optional parameters
