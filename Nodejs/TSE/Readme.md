@@ -7,30 +7,30 @@
 - Basic types: `number`, `string`, `boolean` - Done
 - Arrays (`number[]`, `string[]`, `Array<T>`) - Done
 - `any` type and why to avoid it - Done
-- Object basics (`type` and `interface`)
-- Defining functions (parameter and return types)
-- `void` type and optional parameters
-- Destructured and rest parameters
-- Typing variables as functions
+- Object basics (`type` and `interface`) - Done
+- Defining functions (parameter and return types) - Done
+- `void` type and optional parameters - Done
+- Destructured and rest parameters - Done
+- Typing variables as functions - Done
 
 ### **Practice Tasks**
-✅ Set up a simple TypeScript project.  
-✅ Create functions with explicitly defined types.  
-✅ Define an object type using both `type` and `interface`.  
-✅ Write a function that calculates the area of a rectangle using TypeScript.  
-✅ Create an array of user objects with specific types and iterate over them.  
+✅ Set up a simple TypeScript project.  - Done
+✅ Create functions with explicitly defined types. - Done
+✅ Define an object type using both `type` and `interface`.  - Done
+✅ Write a function that calculates the area of a rectangle using TypeScript.  - Done
+✅ Create an array of user objects with specific types and iterate over them.  - Done
 
 ---
 
 # **Phase 2: TypeScript Advanced Features**
 ### **Concepts to Cover**
-- `Types` vs `Interfaces`
-- Union and Intersection types
-- `readonly` properties
-- `keyof` and `typeof`
-- Index types (`[key: string]: type`)
-- `as const` and enums
-- Tuples (`[number, string]`)
+- `Types` vs `Interfaces` - Done
+- Union and Intersection types - Done
+- `readonly` properties - Done
+- `keyof` and `typeof` - Done
+- Index types (`[key: string]: type`) - Done
+- `as const` and enums - Done
+- Tuples (`[number, string]`) - Done
 - Generics (`T`, `<T extends object>`)
 - Utility types: `Pick`, `Omit`, `Partial`, `Required`
 - `ReturnType` and `Parameters`
