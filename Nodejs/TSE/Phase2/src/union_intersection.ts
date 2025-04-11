@@ -13,15 +13,24 @@ type Employee = {
 };
 
 // here employee is a union type of Person and Employee
-type EmployeeDetails = Person & Employee;
+type EmployeeDetails = Person | Employee;
 
 const employee: EmployeeDetails = {
     name: "John Doe",
     age: 30,
-    id: 1,
-    position: "Software Engineer"
 };
 
+const employee2: EmployeeDetails = {
+    id: 123,
+    position: "Software Engineer",
+};
+
+const employee3: EmployeeDetails = {
+    name: "Jane Doe",       
+    age: 25,
+    id: 456,
+    position: "Project Manager",
+};
 type UnionType = string | number | boolean;
 function processValue(value: UnionType) {
     if (typeof value === "string") {

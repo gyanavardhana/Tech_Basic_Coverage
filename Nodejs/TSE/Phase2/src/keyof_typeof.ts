@@ -11,8 +11,8 @@ function getValue(key: keyof Person, person: Person){
 }
 
 
-console.log(getValue("name", {name: "Gyana", age: 25}))
-console.log(getValue("age", {name: "Gyana", age: 25}))
+console.log(getValue("name", {name: "Gyana", age: 25})) // Gyana
+console.log(getValue("age", {name: "Gyana", age: 25})) // 25
 
 // typeof
 // typeof is used to get the type of a variable
