@@ -31,29 +31,29 @@
 - Index types (`[key: string]: type`) - Done
 - `as const` and enums - Done
 - Tuples (`[number, string]`) - Done
-- Generics (`T`, `<T extends object>`)
-- Utility types: `Pick`, `Omit`, `Partial`, `Required`
-- `ReturnType` and `Parameters`
-- `Record<K, T>`
-- Type guards (`typeof`, `instanceof`, `in`)
-- `never` and `unknown` types
-- Type assertions (`as`, `satisfies`)
-- Discriminated unions
-- Function overloads
-- Type predicate functions
+- Generics (`T`, `<T extends object>`) - Done 
+- Utility types: `Pick`, `Omit`, `Partial`, `Required` - Done
+- `ReturnType` and `Parameters` - Done
+- `Record<K, T>` - Done
+- Type guards (`typeof`, `instanceof`, `in`) - Done
+- `never` and `unknown` types - Done
+- Type assertions (`as`, `satisfies`) - Done
+- Discriminated unions - Done
+- Function overloads - Done
+- Type predicate functions - Done
 
 ### **Practice Tasks**
-✅ Implement a generic function for an API response type.  
-✅ Create a function that only accepts specific object keys using `keyof`.  
-✅ Define a union type for a `User | Admin` and differentiate them using a discriminated union.  
-✅ Build a generic `Stack<T>` class that supports push/pop operations.  
+✅ Implement a generic function for an API response type. - Done
+✅ Create a function that only accepts specific object keys using `keyof`.  - Done
+✅ Define a union type for a `User | Admin` and differentiate them using a discriminated union. - Done  
+✅ Build a generic `Stack<T>` class that supports push/pop operations.  - Done
 
 ---
 
 # **Phase 3: Node.js Core with TypeScript**
 ### **Concepts to Cover**
-- Event Loop and Non-Blocking I/O
-- Callbacks vs Promises vs Async/Await
+- Event Loop and Non-Blocking I/O - Done
+- Callbacks vs Promises vs Async/Await - Done
 - Node.js built-in modules (`fs`, `path`, `http`)
 - Building a bare-metal web server in Node.js
 - Debugging Node.js applications
