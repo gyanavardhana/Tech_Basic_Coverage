@@ -1,13 +1,10 @@
----
 
-### 🌀 `event-loop-non-blocking-io.md`
-
-```md
 # 🌀 Event Loop and Non-Blocking I/O in JavaScript
 
 JavaScript is **single-threaded**, but thanks to the **event loop**, it can handle **asynchronous operations** like I/O, timers, and HTTP requests efficiently.
 
 ---
+![image](https://github.com/user-attachments/assets/6865ca65-1d9e-4d1f-af0d-4d10571b55f1)
 
 ## 🔁 What is the Event Loop?
 
@@ -163,6 +160,4 @@ File read complete!
 - Use **Promises** or **async/await** for clean async code
 - Avoid blocking the stack (`while(true)`, sync I/O)
 - Use **worker threads** or child processes for heavy CPU tasks in Node.js
-
-```
 
