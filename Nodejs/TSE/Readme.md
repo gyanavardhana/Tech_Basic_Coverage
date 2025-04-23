@@ -54,19 +54,19 @@
 ### **Concepts to Cover**
 - Event Loop and Non-Blocking I/O - Done
 - Callbacks vs Promises vs Async/Await - Done
-- Node.js built-in modules (`fs`, `path`, `http`)
-- Building a bare-metal web server in Node.js
-- Debugging Node.js applications
-- Writing Unit and Integration tests (Jest)
-- Middleware concepts (before Express.js)
+- Node.js built-in modules (`fs`, `path`, `http`) - Done
+- Building a bare-metal web server in Node.js - Done
+- Debugging Node.js applications - Done
+- Writing Unit and Integration tests (Jest) - Done
+- Middleware concepts (before Express.js) - Done
 - Handling Errors in Node.js
 - `process.env` and Environment Variables
 
 ### **Practice Tasks**
-✅ Create a simple HTTP server using the Node.js `http` module.  
-✅ Implement a function to read/write JSON files asynchronously.  
+✅ Create a simple HTTP server using the Node.js `http` module.  - Done
+✅ Implement a function to read/write JSON files asynchronously. - Done
 ✅ Write a function that fetches data from an API using `async/await`.  
-✅ Debug a Node.js script using `node --inspect`.  
+✅ Debug a Node.js script using `node --inspect`.  - Done
 
 ---
 
