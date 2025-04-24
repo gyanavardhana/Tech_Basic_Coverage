@@ -20,6 +20,7 @@ npm install --save-dev typescript ts-node nodemon @types/node
 npx tsc --init
 ```
 
+
 Then edit your `tsconfig.json` with these recommended settings:
 
 ```json
@@ -104,5 +105,38 @@ Now you can simply run:
 npm run dev
 ```
 
+
+### 1. Install Jest and related dependencies:
+```bash
+npm install --save-dev jest ts-jest @types/jest 
+```
+
+### 2. Initialize Jest config with TypeScript:
+```bash
+npx ts-jest config:init
+```
+
+This will create a `jest.config.js` file pre-configured to use `ts-jest`.
+
+### 3. (Optional) Add a basic `tsconfig.json` if you don’t already have one:
+```bash
+npx tsc --init
+```
+
+### 4. (Optional) Add a test script to your `package.json`:
+```json
+"scripts": {
+  "test": "jest",
+  "ci-test": "jest --watch"
+}
+```
+
+You're ready to write and run tests with:
+```bash
+npm test //
+npm ci-test
+```
+
 ---
+
 

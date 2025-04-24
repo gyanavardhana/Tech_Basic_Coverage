@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node dist/index.js",
     "debug": "node --inspect-brk dist/index.js",
-    "test": "jest --watch",
+    "test":"jest",
+    "ci-test": "jest --watch",
     "build": "tsc",
     "dev": "nodemon src/index.ts"
   },
