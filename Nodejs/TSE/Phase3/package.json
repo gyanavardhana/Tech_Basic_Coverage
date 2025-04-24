@@ -8,7 +8,7 @@
     "test":"jest",
     "ci-test": "jest --watch",
     "build": "tsc",
-    "dev": "nodemon src/error.ts"
+    "dev": "nodemon src/index.ts"
   },
   "keywords": [],
   "author": "",
