@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Note API</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    li button {
+      margin-left: 10px;
+      background-color: #dc3545;
+    }
+    li button:hover {
+      background-color: #c82333;
+    }
+  </style>
+  <body>
+    <h1>Mini Note App</h1>
+
+    <form id="noteForm">
+      <input type="text" id="noteInput" placeholder="Enter note..." required />
+      <button type="submit">Add Note</button>
+    </form>
+
+    <ul id="notesList"></ul>
+
+    <script>
+      const API_URL = "http://localhost:3000/notes";
+
+      const noteForm = document.getElementById("noteForm");
+      const noteInput = document.getElementById("noteInput");
+      const notesList = document.getElementById("notesList");
+
+      function fetchNotes() {
+        fetch(API_URL)
+          .then((res) => res.json())
+          .then((data) => {
+            notesList.innerHTML = "";
+            data.forEach((note) => {
+              const li = document.createElement("li");
+              li.textContent = note.text;
+
+              const del = document.createElement("button");
+              del.textContent = "🗑️";
+              del.onclick = () => deleteNote(note.id);
+
+              li.appendChild(del);
+              notesList.appendChild(li);
+            });
+          });
+      }
+
+      function addNote(text) {
+        fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text }),
+        }).then(() => {
+          noteInput.value = "";
+          fetchNotes();
+        });
+      }
+
+      function deleteNote(id) {
+        fetch(`${API_URL}/${id}`, { method: "DELETE" }).then(() =>
+          fetchNotes()
+        );
+      }
+
+      noteForm.onsubmit = (e) => {
+        e.preventDefault();
+        const text = noteInput.value.trim();
+        if (text) addNote(text);
+      };
+
+      fetchNotes();
+    </script>
+  </body>
+</html>
