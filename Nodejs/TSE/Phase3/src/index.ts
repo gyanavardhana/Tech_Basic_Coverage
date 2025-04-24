@@ -1,9 +1,10 @@
 import http from "http";
 import path from "path";
 import fs from "fs";
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 import { getData, getDataPromise, fetchData } from "./cb_pm_asaw";
 import { use, runMiddlewares } from "./middlewares/middlewares";
+require("dotenv").config();
 
 type note = {
   id: number;

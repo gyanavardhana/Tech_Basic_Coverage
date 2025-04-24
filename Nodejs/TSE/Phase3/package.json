@@ -24,6 +24,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "dotenv": "^16.5.0",
     "phase3": "file:"
   }
 }

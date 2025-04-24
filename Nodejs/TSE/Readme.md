@@ -59,8 +59,8 @@
 - Debugging Node.js applications - Done
 - Writing Unit and Integration tests (Jest) - Done
 - Middleware concepts (before Express.js) - Done
-- Handling Errors in Node.js
-- `process.env` and Environment Variables
+- Handling Errors in Node.js - Done
+- `process.env` and Environment Variables - Done
 
 ### **Practice Tasks**
 ✅ Create a simple HTTP server using the Node.js `http` module.  - Done
