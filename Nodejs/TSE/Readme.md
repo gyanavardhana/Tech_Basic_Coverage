@@ -72,7 +72,7 @@
 
 # **Phase 4: Express.js with TypeScript**
 ### **Concepts to Cover**
-- Setting up an Express.js server with TypeScript
+- Setting up an Express.js server with TypeScript - Done
 - Creating RESTful API routes
 - Middleware in Express.js
 - Request and Response types (`Request`, `Response`, `NextFunction`)
