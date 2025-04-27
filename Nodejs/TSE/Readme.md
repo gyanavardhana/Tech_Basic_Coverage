@@ -73,22 +73,22 @@
 # **Phase 4: Express.js with TypeScript**
 ### **Concepts to Cover**
 - Setting up an Express.js server with TypeScript - Done
-- Creating RESTful API routes
-- Middleware in Express.js
-- Request and Response types (`Request`, `Response`, `NextFunction`)
-- Handling authentication (JWT, Sessions)
-- Using `Zod` for runtime validation
-- Working with `dotenv` for environment variables
-- Error handling middleware
-- Logging with `Pino`
-- Connecting to a database (PostgreSQL with Prisma)
-- Building a modular Express.js application
+- Creating RESTful API routes - Done
+- Middleware in Express.js - Done
+- Request and Response types (`Request`, `Response`, `NextFunction`) - Done
+- Handling authentication (JWT, Sessions) - Done
+- Using `Zod` for runtime validation - Done
+- Working with `dotenv` for environment variables - Done
+- Error handling middleware - Done
+- Logging with `Pino` - Done
+- Connecting to a database (PostgreSQL with Prisma) - To be done in Phase5
+- Building a modular Express.js application - To be done
 
 ### **Practice Tasks**
-✅ Build an Express.js API with a `GET /users` route.  
-✅ Add a middleware that logs request details.  
-✅ Implement a JWT authentication system.  
-✅ Use Prisma ORM to interact with PostgreSQL.  
+✅ Build an Express.js API with a `GET /users` route. - Done
+✅ Add a middleware that logs request details. - Done
+✅ Implement a JWT authentication system.  - Done
+✅ Use Prisma ORM to interact with PostgreSQL.  -  - To be done in Phase5
 
 ---
 
@@ -102,14 +102,4 @@
 ✅ Implement validation using `Zod`.  
 ✅ Use `Pino` for logging and `dotenv` for environment variables.  
 
----
 
-# **Phase 6: TypeScript with React (Bonus)**
-### **Concepts to Cover**
-- PropTypes vs TypeScript types
-- Typing `useState`, `useRef`, `useReducer`, `useContext`
-- Generic components in React
-
-### **Practice Tasks**
-✅ Convert a JavaScript React component to TypeScript.  
-✅ Implement a `useReducer` state management system with TypeScript.  
