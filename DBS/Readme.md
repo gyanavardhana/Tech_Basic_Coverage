@@ -1,14 +1,16 @@
 
 # **Phase 1: Fundamentals of Databases**
 **Concepts to Cover**
-- What is a Database? (Structured vs Unstructured)
-- What is a Transaction?
-- What is ACID (Atomicity, Consistency, Isolation, Durability)?
-- Why ensuring atomicity in writes is important?
+- What is a Database? (Structured vs Unstructured) - Done
+- What is a Transaction? - Done
+- What is ACID (Atomicity, Consistency, Isolation, Durability)? - Done
+- Why ensuring atomicity in writes is important? - Done
 
 **Practice Tasks** 
-✅ List real-world examples where ACID properties are crucial.  
-✅ Create a mini-transaction simulation using SQL (e.g., money transfer between two bank accounts).  
+
+✅ List real-world examples where ACID properties are crucial.  - Done
+
+✅ Create a mini-transaction simulation using SQL (e.g., money transfer between two bank accounts).  - Done
 
 ---
 
