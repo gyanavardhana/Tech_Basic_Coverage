@@ -81,25 +81,25 @@
 - Working with `dotenv` for environment variables - Done
 - Error handling middleware - Done
 - Logging with `Pino` - Done
-- Connecting to a database (PostgreSQL with Prisma) - To be done in Phase5
+- Connecting to a database (PostgreSQL with Drizzle) - To be done in Phase5
 - Building a modular Express.js application - To be done
 
 ### **Practice Tasks**
 ✅ Build an Express.js API with a `GET /users` route. - Done
 ✅ Add a middleware that logs request details. - Done
 ✅ Implement a JWT authentication system.  - Done
-✅ Use Prisma ORM to interact with PostgreSQL.  -  - To be done in Phase5
+✅ Use Drizzle ORM to interact with PostgreSQL.  -  - To be done in Phase5
 
 ---
 
 # **Phase 5: Full-Stack TypeScript Project**
 ### **Project: Task Management System**
 **Features:**  
-✅ Users can register and log in (JWT authentication).  
-✅ Create, update, and delete tasks.  
-✅ Tasks are stored in PostgreSQL.  
-✅ Users can only see their own tasks.  
-✅ Implement validation using `Zod`.  
-✅ Use `Pino` for logging and `dotenv` for environment variables.  
+✅ Users can register and log in (JWT authentication). - Done
+✅ Create, update, and delete tasks. - Done
+✅ Tasks are stored in PostgreSQL.  - Done
+✅ Users can only see their own tasks. - Done
+✅ Implement validation using `Zod`.  - Done
+✅ Use `Pino` for logging and `dotenv` for environment variables. - Done 
 
 
