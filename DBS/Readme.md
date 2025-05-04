@@ -21,9 +21,7 @@
 - Where MongoDB and PostgreSQL stand in the CAP theorem.
 
 **Practice Tasks**
-✅ Create a comparison chart showing where different DBs (MongoDB, PostgreSQL, Cassandra) fall under CAP.  
-✅ Identify real-world systems that prioritize Availability over Consistency.
-
+- Better to have after after phase 5( to dive deeper)
 ---
 
 # **Phase 3: Database Metrics and Monitoring**
