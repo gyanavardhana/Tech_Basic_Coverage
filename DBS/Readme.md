@@ -14,30 +14,29 @@
 
 ---
 
-# **Phase 2: CAP Theorem and NoSQL Basics**
+# **Phase 2: CAP Theorem and NoSQL Basics** 
 **Concepts to Cover**
-- What is the CAP Theorem?
-- Understanding Consistency, Availability, and Partition Tolerance.
-- Where MongoDB and PostgreSQL stand in the CAP theorem.
+- What is the CAP Theorem? - Done
+- Understanding Consistency, Availability, and Partition Tolerance. - Done
+- Where MongoDB and PostgreSQL stand in the CAP theorem. - Done
 
 **Practice Tasks**
 - Better to have after after phase 5( to dive deeper)
 ---
 
-# **Phase 3: Database Metrics and Monitoring**
+# **Phase 3: Database Metrics and Monitoring** 
 **Concepts to Cover**
-- Key Metrics to Monitor:
-  - IOPS (Input/Output Operations Per Second)
-  - CPU Usage
-  - Memory Usage
-  - Storage Usage
-  - Connection Count
-  - Slow Queries
+- Key Metrics to Monitor: - Done
+  - IOPS (Input/Output Operations Per Second) - Done
+  - CPU Usage - Done
+  - Memory Usage - Done
+  - Storage Usage - Done
+  - Connection Count - Done
+  - Slow Queries - Done
 
 **Practice Tasks**
-✅ Install PostgreSQL locally and use `pg_stat_activity` to monitor connections.  
-✅ Simulate a heavy read/write load and observe CPU and memory spikes.  
-✅ Identify a slow query using `EXPLAIN ANALYZE` in PostgreSQL.
+✅ Install PostgreSQL locally and use `pg_stat_activity` to monitor connections.  - Done
+✅ Simulate a heavy read/write load and observe CPU and memory spikes.  - Done
 
 ---
 
