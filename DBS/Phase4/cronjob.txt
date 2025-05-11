@@ -1,0 +1,2 @@
+*/1 * * * * /home/ubuntu/db_stack/pg_backup.sh >> /home/ubuntu/backuplogs/pg_backup.log 2>&1
+*/1 * * * * /home/ubuntu/db_stack/mongo_backup.sh >> /home/ubuntu/backuplogs/mongo_backup.log 2>&1
