@@ -11,6 +11,8 @@ services:
       POSTGRES_PASSWORD: mypass
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"  # <-- Add this to expose PostgreSQL to host
 
   mongodb:
     image: mongo:6
@@ -21,6 +23,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
       - mongo_data:/data/db
+    ports:
+      - "27017:27017"  # <-- Add this to expose MongoDB to host
 
 volumes:
   postgres_data:
