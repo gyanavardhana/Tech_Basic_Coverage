@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+service Greeting{
+    rpc SayHI(GreetRequest) returns (GreetResponse);
+    rpc Streamlogs(Logquery) returns (stream LogResponse);
+}
+
+message GreetRequest{
+    string name = 1;
+}
+
+message GreetResponse{
+    string message = 1;
+    
+}
+
+message Logquery{
+    string query = 1;
+}
+
+message LogResponse{
+    string log = 1;
+}
+
