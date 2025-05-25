@@ -26,7 +26,3 @@ orders: {
   ]
 }
 */
-
-// MongoDB is document-based
-// Denormalization: Store order items inside orders
-// Normalization: Keep separate collections and use references
