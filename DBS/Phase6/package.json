@@ -1,13 +1,14 @@
 {
   "name": "libsystem",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
+    "introspect": "drizzle-kit introspect",
     "setup-db": "node scripts/setup-database.js",
     "seed": "node scripts/seed-data.js",
     "backup": "bash scripts/backup.sh"
