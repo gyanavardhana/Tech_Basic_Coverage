@@ -1,11 +1,19 @@
 const express = require('express');
 const app = express();
-const { connectMongoDB } = require('./db/config/database');
+const { db, connectMongoDB } = require('./db/config/database');
+const { swaggerUi, specs } = require('./swagger');
 const librouter = require("./routers/librouter")
 
 app.use(express.json())
 connectMongoDB();
-app.use("/lib", librouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, {
+  explorer: true,
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: "Library Management API Documentation"
+}));
+
+// API routes
+app.use('/api', librouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello world" });  

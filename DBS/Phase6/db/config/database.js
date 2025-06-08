@@ -10,7 +10,6 @@ const pool = new Pool({
 
 const db = drizzle(pool, { schema });
 
-
 pool.on('connect', () => {
   console.log('Connected to PostgreSQL with Drizzle ORM');
 });

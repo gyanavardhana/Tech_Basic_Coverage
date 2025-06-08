@@ -1,20 +1,21 @@
 const path = require('path');
 const { migrate } = require('drizzle-orm/node-postgres/migrator');
-const { db } = require('../db/config/database.js');
-const { users, books, loans } = require('../db/models/schema');
+const { db, connectMongoDB } = require('../db/config/database.js');
+const { users, books, loans, usersRelations } = require('../db/models/schema');
 const ActivityLog = require('../db/models/ActivityLog'); // Assuming you're using MongoDB for activity logs
 const { eq } = require('drizzle-orm');
 
 async function setupDatabase() {
   try {
+    connectMongoDB();
     console.log('Setting up database with Drizzle ORM...');
-
-    const migrationsFolder = path.resolve(__dirname, '../db/migrations');
-    await migrate(db, { migrationsFolder });
-    console.log('Database migrations completed successfully');
     await db.delete(loans);
     await db.delete(users);
     await db.delete(books);
+    // const migrationsFolder = path.resolve(__dirname, '../db/migrations');
+    // await migrate(db, { migrationsFolder });
+    // console.log('Database migrations completed successfully');
+    
 
     console.log('Seeding sample data...');
 
@@ -45,7 +46,9 @@ async function setupDatabase() {
       totalCopies: 2,
       availableCopies: 2,
     }).returning();
-
+    
+    const user = await db.select().from(users);
+    console.log(user);
     const [book4] = await db.insert(books).values({
       title: 'JavaScript: The Good Parts',
       author: 'Douglas Crockford',

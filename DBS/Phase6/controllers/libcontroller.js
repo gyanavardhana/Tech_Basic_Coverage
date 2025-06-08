@@ -1,7 +1,7 @@
-const { db } = require('../drizzle.config');
-const { users, books, loans } = require('../db/models/schema');
+const { db } = require('../db/config/database.js');
 const { eq, and, isNull } = require('drizzle-orm');
 const ActivityLog = require('../db/models/ActivityLog');
+const { users, books, loans } = require('../db/models/schema');
 
 // Utils
 const getToday = () => new Date();
@@ -22,8 +22,8 @@ const createUser = async (req, res) => {
 // Get All Users
 const getAllUsers = async (req, res) => {
   try {
-    const users = await db.select().from(users);
-    res.json({ success: true, data: users });
+    const allUsers = await db.select().from(users); // ✅ Fixed: renamed variable
+    res.json({ success: true, data: allUsers });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
@@ -50,8 +50,8 @@ const createBook = async (req, res) => {
 // Get All Books
 const getAllBooks = async (req, res) => {
   try {
-    const books = await db.select().from(books);
-    res.json({ success: true, data: books });
+    const allBooks = await db.select().from(books); // ✅ Fixed: renamed variable
+    res.json({ success: true, data: allBooks });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
@@ -133,10 +133,10 @@ const returnBook = async (req, res) => {
 const getUserLoans = async (req, res) => {
   try {
     const user_id = req.params.id;
-    const loans = await db.select()
+    const userLoans = await db.select() 
       .from(loans)
       .where(eq(loans.user_id, user_id));
-    res.json({ success: true, data: loans });
+    res.json({ success: true, data: userLoans });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
@@ -147,7 +147,7 @@ const searchBooks = async (req, res) => {
   try {
     const { q, user_id } = req.query;
     const query = `%${q.toLowerCase()}%`;
-    const books = await db.execute(
+    const searchResults = await db.execute( // ✅ Fixed: renamed variable
       `SELECT * FROM books WHERE LOWER(title) LIKE $1 OR LOWER(author) LIKE $1 OR LOWER(isbn) LIKE $1`,
       [query]
     );
@@ -160,7 +160,7 @@ const searchBooks = async (req, res) => {
       });
     }
 
-    res.json({ success: true, data: books });
+    res.json({ success: true, data: searchResults });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
