@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
-const { db, connectMongoDB } = require('./db/config/database');
+const { db, connectMongoDB, postgresConnect } = require('./db/config/database');
 const { swaggerUi, specs } = require('./swagger');
 const librouter = require("./routers/librouter")
 
 app.use(express.json())
 connectMongoDB();
+postgresConnect();
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, {
   explorer: true,
   customCss: '.swagger-ui .topbar { display: none }',

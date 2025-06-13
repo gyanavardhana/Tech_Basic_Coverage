@@ -1,7 +1,7 @@
 const { drizzle } = require('drizzle-orm/node-postgres');
 const { Pool } = require('pg');
 const mongoose = require('mongoose');
-const schema = require('../models/schema')
+const schema = require('../models/schema');
 require('dotenv').config();
 
 const pool = new Pool({
@@ -10,13 +10,15 @@ const pool = new Pool({
 
 const db = drizzle(pool, { schema });
 
-pool.on('connect', () => {
-  console.log('Connected to PostgreSQL with Drizzle ORM');
-});
-
-pool.on('error', (err) => {
-  console.error('PostgreSQL connection error:', err);
-});
+const postgresConnect = async () => {
+  try {
+    await pool.query('SELECT 1');
+    console.log('Connected to PostgreSQL with Drizzle ORM');
+  } catch (err) {
+    console.error('PostgreSQL connection error:', err);
+    process.exit(1);
+  }
+};
 
 const connectMongoDB = async () => {
   try {
@@ -28,4 +30,4 @@ const connectMongoDB = async () => {
   }
 };
 
-module.exports = { db, connectMongoDB };
+module.exports = { db, connectMongoDB, postgresConnect };

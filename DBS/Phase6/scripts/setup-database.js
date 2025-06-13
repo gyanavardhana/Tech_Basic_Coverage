@@ -9,12 +9,10 @@ async function setupDatabase() {
   try {
     connectMongoDB();
     console.log('Setting up database with Drizzle ORM...');
-    await db.delete(loans);
-    await db.delete(users);
-    await db.delete(books);
-    // const migrationsFolder = path.resolve(__dirname, '../db/migrations');
-    // await migrate(db, { migrationsFolder });
-    // console.log('Database migrations completed successfully');
+
+    const migrationsFolder = path.resolve(__dirname, '../db/migrations');
+    await migrate(db, { migrationsFolder });
+    console.log('Database migrations completed successfully');
     
 
     console.log('Seeding sample data...');
