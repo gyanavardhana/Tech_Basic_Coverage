@@ -13,6 +13,7 @@ module.exports = defineConfig({
     user: parsed.user,
     password: parsed.password,
     database: parsed.database,
+    ssl: false
   },
   dialect: 'postgresql',
   strict: true,

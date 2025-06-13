@@ -10,8 +10,8 @@
     "db:studio": "drizzle-kit studio",
     "introspect": "drizzle-kit introspect",
     "setup-db": "node scripts/setup-database.js",
-    "seed": "node scripts/seed-data.js",
-    "backup": "bash scripts/backup.sh"
+    "backup": "bash scripts/backup.sh",
+    "restore": "bash scripts/restore.sh"
   },
   "author": "",
   "license": "ISC",

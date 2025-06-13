@@ -59,7 +59,7 @@ const options = {
         },
         Book: {
           type: 'object',
-          required: ['title', 'author', 'isbn', 'total_copies'],
+          required: ['title', 'author', 'isbn', 'totalCopies'],
           properties: {
             id: {
               type: 'string',
@@ -81,12 +81,12 @@ const options = {
               description: 'ISBN number of the book',
               example: '978-0-7432-7356-5'
             },
-            total_copies: {
+            totalCopies: {
               type: 'integer',
               description: 'Total number of copies available',
               example: 5
             },
-            available_copies: {
+            availableCopies: {
               type: 'integer',
               description: 'Number of copies currently available',
               example: 3
@@ -111,27 +111,27 @@ const options = {
               format: 'uuid',
               description: 'Unique identifier for the loan'
             },
-            user_id: {
+            userId: {
               type: 'string',
               format: 'uuid',
               description: 'ID of the user who borrowed the book'
             },
-            book_id: {
+            bookId: {
               type: 'string',
               format: 'uuid',
               description: 'ID of the borrowed book'
             },
-            borrow_date: {
+            borrowedAt: {
               type: 'string',
               format: 'date-time',
               description: 'Date when the book was borrowed'
             },
-            return_date: {
+            dueDate: {
               type: 'string',
               format: 'date-time',
               description: 'Expected return date'
             },
-            returned_date: {
+            returnedAt: {
               type: 'string',
               format: 'date-time',
               nullable: true,
@@ -195,14 +195,14 @@ const options = {
         },
         BorrowBookRequest: {
           type: 'object',
-          required: ['user_id', 'book_id'],
+          required: ['userId', 'bookId'],
           properties: {
-            user_id: {
+            userId: {
               type: 'string',
               format: 'uuid',
               description: 'ID of the user borrowing the book'
             },
-            book_id: {
+            bookId: {
               type: 'string',
               format: 'uuid',
               description: 'ID of the book to borrow'
@@ -216,14 +216,14 @@ const options = {
         },
         ReturnBookRequest: {
           type: 'object',
-          required: ['user_id', 'book_id'],
+          required: ['userId', 'bookId'],
           properties: {
-            user_id: {
+            userId: {
               type: 'string',
               format: 'uuid',
               description: 'ID of the user returning the book'
             },
-            book_id: {
+            bookId: {
               type: 'string',
               format: 'uuid',
               description: 'ID of the book to return'
@@ -441,7 +441,7 @@ const options = {
               'application/json': {
                 schema: {
                   type: 'object',
-                  required: ['title', 'author', 'isbn', 'total_copies'],
+                  required: ['title', 'author', 'isbn', 'totalCopies'],
                   properties: {
                     title: {
                       type: 'string',
@@ -455,7 +455,7 @@ const options = {
                       type: 'string',
                       example: '978-0-7432-7356-5'
                     },
-                    total_copies: {
+                    totalCopies: {
                       type: 'integer',
                       example: 5
                     }
@@ -534,7 +534,7 @@ const options = {
               description: 'Search query'
             },
             {
-              name: 'user_id',
+              name: 'userId',
               in: 'query',
               required: false,
               schema: {
@@ -694,7 +694,7 @@ const options = {
           description: 'Retrieves activity logs with optional filtering',
           parameters: [
             {
-              name: 'user_id',
+              name: 'userId',
               in: 'query',
               required: false,
               schema: {
@@ -753,7 +753,7 @@ const options = {
       }
     }
   },
-  apis: ['./routes/*.js', './controllers/*.js'] // Path to your route files
+  apis: ['./routes/*.js', './controllers/*.js']
 };
 
 const specs = swaggerJsdoc(options);

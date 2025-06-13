@@ -1,19 +1,18 @@
 const { db } = require('../db/config/database.js');
-const { eq, or,lt, and, ilike, isNull } = require('drizzle-orm');
+const { eq, or, lt, and, ilike, isNull } = require('drizzle-orm');
 const ActivityLog = require('../db/models/ActivityLog');
 const { users, books, loans } = require('../db/models/schema');
 
 // Utils
 const getToday = () => new Date();
-const addDays = (date, days) => new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
+const addDays = (date, days) => new Date(date.getTime() + days * 86400000); // 24 * 60 * 60 * 1000
 
 // Create User
 const createUser = async (req, res) => {
   try {
     const { name, email } = req.body;
     const result = await db.insert(users).values({ name, email }).returning();
-    const user = result[0];
-    res.status(201).json({ success: true, data: user });
+    res.status(201).json({ success: true, data: result[0] });
   } catch (error) {
     res.status(400).json({ success: false, error: error.message });
   }
@@ -32,16 +31,15 @@ const getAllUsers = async (req, res) => {
 // Create Book
 const createBook = async (req, res) => {
   try {
-    const { title, author, isbn, total_copies } = req.body;
+    const { title, author, isbn, totalCopies } = req.body;
     const result = await db.insert(books).values({
       title,
       author,
       isbn,
-      total_copies,
-      available_copies: total_copies
+      totalCopies,
+      availableCopies: totalCopies,
     }).returning();
-    const book = result[0];
-    res.status(201).json({ success: true, data: book });
+    res.status(201).json({ success: true, data: result[0] });
   } catch (error) {
     res.status(400).json({ success: false, error: error.message });
   }
@@ -58,74 +56,56 @@ const getAllBooks = async (req, res) => {
 };
 
 // Borrow Book
-// const borrowBook = async (req, res) => {
-//   try {
-//     const { userId, book_id, days_to_return = 7 } = req.body;
-//     console.log(req.body);
-//     const book = await db.select().from(books).where(eq(books.id, book_id));
-//     if (!book[0]) throw new Error('Book not found');
-//     if (book[0].available_copies < 1) throw new Error('No available copies');
-
-//     const today = getToday();
-//     const return_date = addDays(today, days_to_return);
-
-    
-//     const result = await db.insert(loans).values({
-//       userId,
-//       bookId: book_id,        
-//       borrowedAt: today,       
-//       dueDate: return_date,     
-//       returnedAt: null         
-//     }).returning();
-
-//     await db.update(books)
-//       .set({ available_copies: book[0].available_copies - 1 })
-//       .where(eq(books.id, book_id));
-
-//     await ActivityLog.create({
-//       userId,
-//       action: 'borrowed',
-//       metadata: { book_id }
-//     });
-
-//     const loan = result[0];
-//     res.json({ success: true, data: loan });
-//   } catch (error) {
-//     res.status(400).json({ success: false, error: error.message });
-//   }
-// };
 const borrowBook = async (req, res) => {
   try {
     const { userId, book_id, days_to_return = 7 } = req.body;
-    console.log(req.body);
+
+    if (!userId || !book_id) {
+      return res.status(400).json({ success: false, error: 'Missing userId or book_id' });
+    }
+
+    // Check for existing active loan for same user and book
+    const existingLoan = await db.select().from(loans).where(and(
+      eq(loans.userId, userId),
+      eq(loans.bookId, book_id),
+      isNull(loans.returnedAt)
+    ));
+
+    if (existingLoan.length > 0) {
+      return res.status(400).json({
+        success: false,
+        error: 'User already has an active loan for this book'
+      });
+    }
 
     const book = await db.select().from(books).where(eq(books.id, book_id));
     if (!book[0]) throw new Error('Book not found');
-    if (book[0].available_copies < 1) throw new Error('No available copies');
+
+    const availableCopies = book[0].availableCopies || 0;
+    if (availableCopies < 1) throw new Error('No available copies left');
 
     const today = getToday();
     const returnDate = addDays(today, days_to_return);
 
     const result = await db.insert(loans).values({
       userId,
-      bookId: book_id,         // ✅ use bookId not book_id
-      borrowedAt: today,       // ✅ correct key
-      dueDate: returnDate,     // ✅ correct key
-      returnedAt: null         // ✅ correct key
+      bookId: book_id,
+      borrowedAt: today,
+      dueDate: returnDate,
+      returnedAt: null,
     }).returning();
 
     await db.update(books)
-      .set({ available_copies: book[0].available_copies - 1 })
+      .set({ availableCopies: availableCopies - 1 })
       .where(eq(books.id, book_id));
 
     await ActivityLog.create({
       userId,
       action: 'borrowed',
-      metadata: { book_id }
+      metadata: { book_id },
     });
 
-    const loan = result[0];
-    res.json({ success: true, data: loan });
+    res.json({ success: true, data: result[0] });
   } catch (error) {
     res.status(400).json({ success: false, error: error.message });
   }
@@ -135,32 +115,29 @@ const borrowBook = async (req, res) => {
 const returnBook = async (req, res) => {
   try {
     const { userId, book_id } = req.body;
-    
-    const activeLoan = await db.select()
-      .from(loans)
-      .where(and(eq(loans.userId, userId), eq(loans.book_id, book_id), isNull(loans.returned_date)));
+
+    const activeLoan = await db.select().from(loans)
+      .where(and(eq(loans.userId, userId), eq(loans.bookId, book_id), isNull(loans.returnedAt)));
 
     if (!activeLoan[0]) throw new Error('No active loan found for this book and user');
 
     const today = getToday();
-
     await db.update(loans)
-      .set({ returned_date: today })
+      .set({ returnedAt: today })
       .where(eq(loans.id, activeLoan[0].id));
 
     const book = await db.select().from(books).where(eq(books.id, book_id));
     await db.update(books)
-      .set({ available_copies: book[0].available_copies + 1 })
+      .set({ availableCopies: book[0].availableCopies + 1 })
       .where(eq(books.id, book_id));
 
     await ActivityLog.create({
       userId,
       action: 'returned',
-      metadata: { book_id }
+      metadata: { book_id },
     });
 
-    const result = { message: 'Book returned successfully' };
-    res.json({ success: true, data: result });
+    res.json({ success: true, data: { message: 'Book returned successfully' } });
   } catch (error) {
     res.status(400).json({ success: false, error: error.message });
   }
@@ -170,9 +147,7 @@ const returnBook = async (req, res) => {
 const getUserLoans = async (req, res) => {
   try {
     const userId = req.params.id;
-    const userLoans = await db.select() 
-      .from(loans)
-      .where(eq(loans.userId, userId));
+    const userLoans = await db.select().from(loans).where(eq(loans.userId, userId));
     res.json({ success: true, data: userLoans });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
@@ -183,7 +158,6 @@ const getUserLoans = async (req, res) => {
 const searchBooks = async (req, res) => {
   try {
     const { q, userId } = req.query;
-
     if (!q || typeof q !== 'string') {
       return res.status(400).json({ success: false, error: 'Missing or invalid search query (q)' });
     }
@@ -193,13 +167,11 @@ const searchBooks = async (req, res) => {
     const searchResults = await db
       .select()
       .from(books)
-      .where(
-        or(
-          ilike(books.title, query),
-          ilike(books.author, query),
-          ilike(books.isbn, query)
-        )
-      );
+      .where(or(
+        ilike(books.title, query),
+        ilike(books.author, query),
+        ilike(books.isbn, query)
+      ));
 
     if (userId) {
       await ActivityLog.create({
@@ -226,15 +198,14 @@ const getOverdueBooks = async (req, res) => {
         isNull(loans.returnedAt),
         lt(loans.dueDate, today)
       ));
-      
+
     res.json({ success: true, data: overdue });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 };
 
-
-// Get Logs
+// Get Activity Logs
 const getLogs = async (req, res) => {
   try {
     const { userId, action, limit = 50 } = req.query;
